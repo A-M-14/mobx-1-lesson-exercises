@@ -9,9 +9,15 @@ export class ShoppingList {
         this.length = 0
         // your code here
 
+        makeObservable(this, {
+          list: observable,
+          length: observable,
+          checkItem: action
+        })
     }
-    checkItem = () => {
-        // your code here
+    checkItem = (name) => {
+        let item = this.list.find(i => i.name === name)
+        item.completed = !item.completed
     }
     addItem = () => {
         // your code here
